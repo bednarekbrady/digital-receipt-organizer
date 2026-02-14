@@ -17,6 +17,11 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_receipt():
     file = request.files['receipt']
+
+    # Prevent crash if no file is selected
+    if file.filename == "":
+        return "Error: No file selected."
+
     vendor = request.form['vendor']
     amount = request.form['amount']
     date = request.form['date']

@@ -20,7 +20,7 @@ The Digital Receipt Organizer is a web application designed to help users upload
 - **Frontend:** HTML, CSS, Bootstrap
 - **Database:** SQLite (development)
 - **Visualization:** Chart.js (future milestone)
-- **OCR:** Tesseract OCR or EasyOCR (future milestone)
+- **OCR:** Looking into some currently (future milestone)
 
 ---
 
