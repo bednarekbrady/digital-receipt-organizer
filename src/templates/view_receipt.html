@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Receipt Details</h2>
+
+<p><strong>Vendor:</strong> {{ receipt.vendor }}</p>
+<p><strong>Amount:</strong> ${{ "%.2f"|format(receipt.amount) }}</p>
+<p><strong>Date:</strong> {{ receipt.date }}</p>
+<p><strong>Category:</strong> {{ receipt.category }}</p>
+
+<h4 class="mt-4">Receipt Image</h4>
+<img src="/{{ receipt.file_path }}" alt="Receipt Image" class="img-fluid">
+
+{% endblock %}
