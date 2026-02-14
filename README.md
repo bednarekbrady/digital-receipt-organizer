@@ -39,3 +39,4 @@ This project is being developed for CIDS 484 as a semester-long software project
 - **OCR:** Some kind of OCR (future milestone)
 
 ---
+- Video link: https://2370711.kaf.kaltura.com/media/1_87ac040h
