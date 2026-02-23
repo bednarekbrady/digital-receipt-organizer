@@ -39,4 +39,4 @@ This project is being developed for CIDS 484 as a semester-long software project
 - **OCR:** Some kind of OCR (future milestone)
 
 ---
-- Video link: https://2370711.kaf.kaltura.com/media/1_87ac040h
+- Video link: [https://2370711.kaf.kaltura.com/media/1_87ac040h](https://2370711.kaf.kaltura.com/media/Kaltura%20Capture%20recording%20-%20February%2013th%202026%2C%2010%3A33%3A15%20pm/1_87ac040h)
