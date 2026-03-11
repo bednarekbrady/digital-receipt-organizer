@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<!-- Load Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h4>Spending by Category</h4>
+        <canvas id="categoryChart"></canvas>
+    </div>
+
+    <div class="col-md-6">
+        <h4>Spending by Month</h4>
+        <canvas id="monthlyChart"></canvas>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h4>Top Vendors</h4>
+        <canvas id="vendorChart"></canvas>
+    </div>
+</div>
+
+<script>
+    /* -------------------------
+       CATEGORY CHART (Pie)
+    -------------------------- */
+
+    const categoryLabels = {{ category_data | map(attribute='category') | list | tojson }};
+    const categoryTotals = {{ category_data | map(attribute='total') | list | tojson }};
+
+    new Chart(document.getElementById('categoryChart'), {
+        type: 'pie',
+        data: {
+            labels: categoryLabels,
+            datasets: [{
+                data: categoryTotals,
+                backgroundColor: [
+                    '#4e79a7', '#f28e2b', '#e15759',
+                    '#76b7b2', '#59a14f', '#edc948'
+                ]
+            }]
+        }
+    });
+
+    /* -------------------------
+       MONTHLY CHART (Bar)
+    -------------------------- */
+
+    const monthlyLabels = {{ monthly_data | map(attribute='month') | list | tojson }};
+    const monthlyTotals = {{ monthly_data | map(attribute='total') | list | tojson }};
+
+    new Chart(document.getElementById('monthlyChart'), {
+        type: 'bar',
+        data: {
+            labels: monthlyLabels,
+            datasets: [{
+                label: 'Total Spending',
+                data: monthlyTotals,
+                backgroundColor: '#4e79a7'
+            }]
+        }
+    });
+
+    /* -------------------------
+       VENDOR CHART (Horizontal Bar)
+    -------------------------- */
+
+    const vendorLabels = {{ vendor_data | map(attribute='vendor') | list | tojson }};
+    const vendorTotals = {{ vendor_data | map(attribute='total') | list | tojson }};
+
+    new Chart(document.getElementById('vendorChart'), {
+        type: 'bar',
+        data: {
+            labels: vendorLabels,
+            datasets: [{
+                label: 'Total Spending',
+                data: vendorTotals,
+                backgroundColor: '#f28e2b'
+            }]
+        },
+        options: {
+            indexAxis: 'y'
+        }
+    });
+</script>
+
+{% endblock %}

@@ -3,6 +3,44 @@
 {% block content %}
 <h2>All Receipts</h2>
 
+<form method="get" class="row g-2 mb-3">
+  <div class="col-md-3">
+    <label class="form-label">Sort by</label>
+    <select name="sort" class="form-select">
+      <option value="date" {% if current_sort == 'date' %}selected{% endif %}>Date</option>
+      <option value="amount" {% if current_sort == 'amount' %}selected{% endif %}>Amount</option>
+      <option value="vendor" {% if current_sort == 'vendor' %}selected{% endif %}>Vendor</option>
+      <option value="category" {% if current_sort == 'category' %}selected{% endif %}>Category</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">Filter by category</label>
+    <select name="category" class="form-select">
+      <option value="">All</option>
+      <option value="Food" {% if current_category == 'Food' %}selected{% endif %}>Food</option>
+      <option value="Travel" {% if current_category == 'Travel' %}selected{% endif %}>Travel</option>
+      <option value="Shopping" {% if current_category == 'Shopping' %}selected{% endif %}>Shopping</option>
+      <option value="Utilities" {% if current_category == 'Utilities' %}selected{% endif %}>Utilities</option>
+      <!-- add more categories as you like -->
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Search by vendor</label>
+    <input type="text"
+           name="search"
+           class="form-control"
+           placeholder="e.g., Target"
+           value="{{ current_search }}">
+  </div>
+
+  <div class="col-md-2 d-flex align-items-end">
+    <button type="submit" class="btn btn-primary w-100">Apply</button>
+  </div>
+</form>
+
+
 <table class="table table-striped mt-4">
     <thead>
         <tr>
@@ -21,7 +59,17 @@
             <td>${{ "%.2f"|format(r.amount) }}</td>
             <td>{{ r.category }}</td>
             <td>
-                <a href="/view/{{ r.id }}" class="btn btn-sm btn-primary">View</a>
+                <!-- View button -->
+                <a href="/view/{{ r.id }}" class="btn btn-sm btn-primary">View</a>      
+                <!-- Edit button -->
+                <a href="/edit/{{ r.id }}" class="btn btn-warning btn-sm">Edit</a>
+                <!-- Delete button -->
+                <form action="/delete/{{ r.id }}" method="POST" style="display:inline;">
+                    <button class="btn btn-danger btn-sm" 
+                            onclick="return confirm('Delete this receipt?');">
+                        Delete
+                    </button>
+                </form>
             </td>
         </tr>
         {% endfor %}
