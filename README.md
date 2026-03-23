@@ -57,4 +57,4 @@ All charts pull live aggregated data from the SQLite database.
 ---
 
 ## Video Link
-- Milestone 2 Link
+- Milestone 2 Link: https://cdnapisec.kaltura.com/index.php/extwidget/preview/partner_id/2370711/uiconf_id/54949472/entry_id/1_tnqz8pwg/embed/dynamic 
