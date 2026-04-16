@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 import os
 import sqlite3
+import json
+from ocr_processor import process_receipt
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -14,7 +16,65 @@ def get_db_connection():
 def index():
     return render_template('upload.html')
 
-@app.route('/upload', methods=['POST'])
+@app.route('/api/extract-receipt', methods=['POST'])
+def extract_receipt():
+    """
+    AJAX endpoint for OCR extraction.
+    Accepts a file upload and returns extracted vendor, amount, and date.
+    """
+    # Check if file is present
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+    
+    # Check if file is a valid image format
+    allowed_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'tiff'}
+    if '.' not in file.filename or file.filename.rsplit('.', 1)[1].lower() not in allowed_extensions:
+        return jsonify({'error': 'Invalid file type. Please upload an image.'}), 400
+    
+    try:
+        # Save file temporarily
+        temp_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'temp_' + file.filename)
+        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+        file.save(temp_file_path)
+        
+        # Run OCR
+        ocr_result = process_receipt(temp_file_path)
+        
+        # Prepare response
+        response = {
+            'success': True,
+            'vendor': {
+                'value': ocr_result['vendor']['value'] or '',
+                'confidence': round(ocr_result['vendor']['confidence'], 2)
+            },
+            'amount': {
+                'value': ocr_result['amount']['value'] or '',
+                'confidence': round(ocr_result['amount']['confidence'], 2)
+            },
+            'date': {
+                'value': ocr_result['date']['value'] or '',
+                'confidence': round(ocr_result['date']['confidence'], 2)
+            },
+            'error': ocr_result['error']
+        }
+        
+        # Clean up temp file
+        try:
+            os.remove(temp_file_path)
+        except:
+            pass
+        
+        return jsonify(response)
+    
+    except Exception as e:
+        return jsonify({'error': f'Error processing image: {str(e)}'}), 500
+
+
 def upload_receipt():
     file = request.files['receipt']
 
