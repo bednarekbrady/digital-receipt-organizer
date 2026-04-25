@@ -10,9 +10,9 @@ The **Digital Receipt Organizer** is a web-based application that streamlines re
 
 ---
 
-## ✨ Alpha Release Features
+##  Alpha Release Features
 
-### 1. **Receipt Upload & OCR Extraction** ⭐ NEW
+### 1. **Receipt Upload & OCR Extraction**  NEW
 - Upload receipt images (JPG, PNG, GIF, BMP, TIFF)
 - **Automatic data extraction** using EasyOCR AI
   - Vendor/store name detection
@@ -36,9 +36,9 @@ The **Digital Receipt Organizer** is a web-based application that streamlines re
 
 ### 4. **Analytics Dashboard**
 Ray interactive charts powered by Chart.js:
-- 📊 **Spending by Category** - Pie chart showing expense breakdown
-- 📈 **Spending by Month** - Bar chart tracking trends over time
-- 🏪 **Top Vendors** - Horizontal bar chart of most frequent stores
+- **Spending by Category** - Pie chart showing expense breakdown
+- **Spending by Month** - Bar chart tracking trends over time
+- **Top Vendors** - Horizontal bar chart of most frequent stores
 - All visualizations update dynamically as receipts are added/modified
 
 ### 5. **User-Friendly Interface**
@@ -49,7 +49,7 @@ Ray interactive charts powered by Chart.js:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.8+
@@ -110,7 +110,7 @@ digital-receipt-organizer/
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |-----------|-----------|
@@ -123,7 +123,7 @@ digital-receipt-organizer/
 
 ---
 
-## 📊 Key Technical Highlights
+## Key Technical Highlights
 
 ### OCR Integration (Milestone 3 Focus)
 - Uses EasyOCR for robust character recognition
@@ -143,7 +143,7 @@ digital-receipt-organizer/
 
 ---
 
-## 🎬 Demonstration
+## Demonstration Video for Current Milestone
 
 For a video walkthrough of features and OCR extraction in action, see Milestone 3 video: [Video Link Coming Soon]
 
@@ -157,7 +157,7 @@ For a video walkthrough of features and OCR extraction in action, see Milestone 
 
 ---
 
-## 📈 Possible Future Enhancements
+## Possible Future Enhancements (Doubtful I'll be able to get to all)
 
 ### Phase 2 (Planned)
 - User authentication & multi-user support
@@ -175,7 +175,7 @@ For a video walkthrough of features and OCR extraction in action, see Milestone 
 
 ---
 
-## 🐛 Known Limitations & Notes
+## Known Limitations & Notes
 
 - OCR accuracy depends on receipt image quality (clearer images = better extraction)
 - Handwritten receipts may have lower extraction accuracy
@@ -184,7 +184,7 @@ For a video walkthrough of features and OCR extraction in action, see Milestone 
 
 ---
 
-## 📝 Development Notes
+## Development Notes
 
 ### Database
 - Use `src/init_db.py` to reset the database if needed
@@ -203,20 +203,20 @@ The application uses Flask's development server. For production deployment:
 
 ---
 
-## 👥 Contributors
+## Contributors
 
 - **Developer:** [Brady Bednarek]
 - **Course:** CIDS 484
 
 ---
 
-## 📄 License
+## License
 
 This project is open source and available for educational purposes.
 
 ---
 
-## 📞 Support & Questions
+## Questions
 
 For issues, questions, or feature requests, please refer to the project documentation or message me.
 
