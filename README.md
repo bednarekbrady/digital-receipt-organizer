@@ -145,7 +145,7 @@ digital-receipt-organizer/
 
 ## Demonstration Video for Current Milestone
 
-For a video walkthrough of features and OCR extraction in action, see Milestone 3 video: [Video Link Coming Soon]
+For a video walkthrough of features and OCR extraction in action, see Milestone 3 video:(https://cdnapisec.kaltura.com/index.php/extwidget/preview/partner_id/2370711/uiconf_id/54949472/entry_id/1_yo8gspio/embed/dynamic)
 
 ### Features Demonstrated:
 1. Uploading a receipt image
