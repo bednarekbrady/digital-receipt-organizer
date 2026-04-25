@@ -62,12 +62,12 @@ Ray interactive charts powered by Chart.js:
    cd digital-receipt-organizer
    ```
 
-2. **Install dependencies**
+2. **Install required packages**
    ```bash
-   pip install -r requirements.txt
+   pip install Flask EasyOCR Pillow
    ```
    
-   Required packages:
+   Or install them individually:
    - Flask (web framework)
    - EasyOCR (optical character recognition)
    - Pillow (image processing)
@@ -102,9 +102,9 @@ digital-receipt-organizer/
 │       ├── view_receipt.html  # Individual receipt details
 │       ├── edit.html          # Receipt editing
 │       └── dashboard.html     # Analytics & charts
-├── docs/
-│   └── project-outline.md     # Detailed project documentation
 ├── OCR_IMPLEMENTATION.md      # OCR integration details
+├── .gitignore
+├── database.db                # SQLite database (generated on first run)
 └── README.md                  # This file
 ```
 
