@@ -1,64 +1,225 @@
 # Digital Receipt Organizer
 
-## Overview
-The Digital Receipt Organizer is a web-based application that allows users to upload, store, categorize, and view their receipts. The system supports image/PDF uploads, stores receipt metadata in a SQLite database, and displays all receipts in a searchable, filterable list. Milestone 2 expands the project with full CRUD functionality and a new analytics dashboard powered by Chart.js.
+## 📋 Overview
 
-This project is being developed for CIDS 484 as a semester-long software project.
+The **Digital Receipt Organizer** is a web-based application that streamlines receipt management. Users can upload receipt images, automatically extract data using AI-powered OCR, store receipts in an organized database, and analyze spending patterns through an interactive dashboard.
 
----
-
-## Current Progress (Milestone 2)
-
-### ✔ Core Functionality Expanded
-- Full CRUD implemented (Create, Read, Update, Delete)
-- Edit page added for modifying receipt details  
-- Delete confirmation added for safe removal  
-- Navigation updated to include Dashboard page  
-
-### ✔ Improved Receipts List
-- Sorting by date, amount, vendor, and category  
-- Filtering by category  
-- Search bar for vendor name  
-- Cleaner table layout with action buttons  
-
-### ✔ Dashboard & Analytics
-A new `/dashboard` page was added featuring three interactive Chart.js visualizations:
-
-- **Spending by Category (Pie Chart)**  
-- **Spending by Month (Bar Chart)**  
-- **Top Vendors (Horizontal Bar Chart)**  
-
-All charts pull live aggregated data from the SQLite database.
-
-### ✔ Code & Structure Enhancements
-- Templates organized using `base.html` inheritance  
-- Database queries structured for analytics  
-- Static uploads folder maintained for receipt files  
-- Project structure cleaned and documented  
+**Status:** Alpha Release (Milestone 3)  
+**Course:** CIDS 484 - Semester-long Software Project  
+**Last Updated:** April 2026
 
 ---
 
-## Next Steps
-- Add file validation and error handling  
-- Integrate OCR for automatic data extraction  
-- Add user authentication (optional future milestone)  
-- Add export options (CSV/PDF)  
-- Expand dashboard with more analytics  
+## ✨ Alpha Release Features
+
+### 1. **Receipt Upload & OCR Extraction** ⭐ NEW
+- Upload receipt images (JPG, PNG, GIF, BMP, TIFF)
+- **Automatic data extraction** using EasyOCR AI
+  - Vendor/store name detection
+  - Total amount recognition
+  - Transaction date extraction
+- Confidence scores displayed for each extracted field
+- Users can edit extracted values before saving
+- Fallback to manual entry if OCR extraction fails
+
+### 2. **Full CRUD Operations**
+- ✅ **Create:** Upload and save receipts with metadata
+- ✅ **Read:** View all receipts in searchable list or individual receipt details
+- ✅ **Update:** Edit receipt information (vendor, amount, date, category)
+- ✅ **Delete:** Remove receipts with confirmation dialog
+
+### 3. **Smart Receipt Management**
+- **Search:** Find receipts by vendor name
+- **Filter:** Filter receipts by category
+- **Sort:** Sort receipts by date (newest/oldest), amount (highest/lowest), vendor name, or category
+- **Categories:** Organize receipts (Food, Gas, Shopping, etc.)
+
+### 4. **Analytics Dashboard**
+Ray interactive charts powered by Chart.js:
+- 📊 **Spending by Category** - Pie chart showing expense breakdown
+- 📈 **Spending by Month** - Bar chart tracking trends over time
+- 🏪 **Top Vendors** - Horizontal bar chart of most frequent stores
+- All visualizations update dynamically as receipts are added/modified
+
+### 5. **User-Friendly Interface**
+- Clean, responsive Bootstrap design
+- Intuitive navigation menu
+- Receipt image preview
+- Mobile-ready layout
 
 ---
 
-## Tech Stack
-- **Backend:** Python (Flask)  
-- **Frontend:** HTML, CSS, Bootstrap  
-- **Database:** SQLite  
-- **Visualization:** Chart.js  
-- **OCR:** Planned for future milestone  
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.8+
+- pip (Python package manager)
+
+### Installation & Setup
+
+1. **Clone or download the repository**
+   ```bash
+   cd digital-receipt-organizer
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+   Required packages:
+   - Flask (web framework)
+   - EasyOCR (optical character recognition)
+   - Pillow (image processing)
+
+3. **Initialize the database**
+   ```bash
+   python src/init_db.py
+   ```
+   This creates the SQLite database and prepares the receipts table.
+
+4. **Run the application**
+   ```bash
+   python src/app.py
+   ```
+   
+   The app will be available at: `http://localhost:5000`
+
+### File Structure
+```
+digital-receipt-organizer/
+├── src/
+│   ├── app.py                 # Flask application & route handlers
+│   ├── ocr_processor.py       # OCR extraction logic (EasyOCR)
+│   ├── init_db.py             # Database initialization
+│   ├── schema.sql             # Database schema
+│   ├── static/
+│   │   └── uploads/           # Stored receipt images
+│   └── templates/
+│       ├── base.html          # Base template (navigation, styling)
+│       ├── upload.html        # Receipt upload & OCR extraction
+│       ├── receipts.html      # Receipt list view
+│       ├── view_receipt.html  # Individual receipt details
+│       ├── edit.html          # Receipt editing
+│       └── dashboard.html     # Analytics & charts
+├── docs/
+│   └── project-outline.md     # Detailed project documentation
+├── OCR_IMPLEMENTATION.md      # OCR integration details
+└── README.md                  # This file
+```
 
 ---
 
-## Video Link
-<<<<<<< HEAD
-- Milestone 2 Link: 
-=======
-- Milestone 2 Link: https://cdnapisec.kaltura.com/index.php/extwidget/preview/partner_id/2370711/uiconf_id/54949472/entry_id/1_tnqz8pwg/embed/dynamic 
->>>>>>> 01983d8fe6ce3b09669fbeba9b12d77f753a9e9f
+## 🔧 Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| **Backend** | Python 3 + Flask |
+| **Frontend** | HTML5, CSS3, Bootstrap 5 |
+| **Database** | SQLite |
+| **AI/OCR** | EasyOCR (leverages deep learning) |
+| **Charts** | Chart.js |
+| **Template Engine** | Jinja2 |
+
+---
+
+## 📊 Key Technical Highlights
+
+### OCR Integration (Milestone 3 Focus)
+- Uses EasyOCR for robust character recognition
+- Handles multiple receipt formats and quality levels
+- Provides confidence scoring (0-100%) for extracted data
+- Lazy-loads OCR model for performance
+- Cleans temporary files after processing
+
+### Database Schema
+- **receipts table:** Stores vendor, amount, date, category, file path, and timestamps
+- Indexed for efficient searching and filtering
+- Prepared for multi-user support (future milestone)
+
+### API Endpoints
+- `POST /api/extract-receipt` - OCR extraction endpoint
+- Additional CRUD endpoints for receipt management
+
+---
+
+## 🎬 Demonstration
+
+For a video walkthrough of features and OCR extraction in action, see Milestone 3 video: [Video Link Coming Soon]
+
+### Features Demonstrated:
+1. Uploading a receipt image
+2. Auto-extraction of vendor, amount, and date
+3. Editing extracted data before saving
+4. Viewing and searching receipts
+5. Analytics dashboard in action
+6. Sorting and filtering receipts
+
+---
+
+## 📈 Possible Future Enhancements
+
+### Phase 2 (Planned)
+- User authentication & multi-user support
+- Export receipts to CSV/PDF
+- Receipt image compression & optimization
+- Advanced date parsing for non-English receipts
+- Recurring receipt patterns & budgeting
+
+### Phase 3 (Planned)
+- Mobile app (React Native)
+- Cloud storage integration (AWS S3)
+- Receipt receipt template matching
+- Expense predictions & ML-based categorization
+- Integration with accounting software
+
+---
+
+## 🐛 Known Limitations & Notes
+
+- OCR accuracy depends on receipt image quality (clearer images = better extraction)
+- Handwritten receipts may have lower extraction accuracy
+- Currently single-user (authentication planned for future milestone)
+- Receipts stored locally in SQLite (cloud backup planned)
+
+---
+
+## 📝 Development Notes
+
+### Database
+- Use `src/init_db.py` to reset the database if needed
+- All receipt files are stored in `src/static/uploads/`
+
+### Running Tests
+```bash
+python -m pytest  # When test suite is added
+```
+
+### Building for Production
+The application uses Flask's development server. For production deployment:
+- Use Gunicorn: `gunicorn -w 4 src.app:app`
+- Set up reverse proxy (Nginx)
+- Configure environment variables for security
+
+---
+
+## 👥 Contributors
+
+- **Developer:** [Brady Bednarek]
+- **Course:** CIDS 484
+
+---
+
+## 📄 License
+
+This project is open source and available for educational purposes.
+
+---
+
+## 📞 Support & Questions
+
+For issues, questions, or feature requests, please refer to the project documentation or message me.
+
+---
+
+**Last Updated:** April 2026 | **Project Status:** Active Development
