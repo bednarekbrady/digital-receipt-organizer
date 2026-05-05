@@ -7,8 +7,11 @@ from ocr_processor import process_receipt
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
+# Database path in the project root
+DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'database.db')
+
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -75,6 +78,7 @@ def extract_receipt():
         return jsonify({'error': f'Error processing image: {str(e)}'}), 500
 
 
+@app.route('/upload', methods=['POST'])
 def upload_receipt():
     file = request.files['receipt']
 

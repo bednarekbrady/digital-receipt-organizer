@@ -1,8 +1,12 @@
 import sqlite3
+import os
 
-connection = sqlite3.connect('database.db')
+# Create database in the parent directory (project root)
+db_path = os.path.join(os.path.dirname(__file__), '..', 'database.db')
 
-with open('schema.sql') as f:
+connection = sqlite3.connect(db_path)
+
+with open(os.path.join(os.path.dirname(__file__), 'schema.sql')) as f:
     connection.executescript(f.read())
 
 connection.commit()
