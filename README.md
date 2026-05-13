@@ -1,6 +1,6 @@
 # Digital Receipt Organizer
 
-## 📋 Overview
+##  Overview
 
 The **Digital Receipt Organizer** is a web-based application that streamlines receipt management. Users can upload receipt images, automatically extract data using AI-powered OCR, store receipts in an organized database, and analyze spending patterns through an interactive dashboard.
 
@@ -10,7 +10,7 @@ The **Digital Receipt Organizer** is a web-based application that streamlines re
 
 ---
 
-## 🎯 Project Features
+##  Project Features
 
 ### 1. **Receipt Upload & OCR Extraction**  NEW
 - Upload receipt images (JPG, PNG, GIF, BMP, TIFF)
@@ -23,10 +23,10 @@ The **Digital Receipt Organizer** is a web-based application that streamlines re
 - Fallback to manual entry if OCR extraction fails
 
 ### 2. **Full CRUD Operations**
-- ✅ **Create:** Upload and save receipts with metadata
-- ✅ **Read:** View all receipts in searchable list or individual receipt details
-- ✅ **Update:** Edit receipt information (vendor, amount, date, category)
-- ✅ **Delete:** Remove receipts with confirmation dialog
+-  **Create:** Upload and save receipts with metadata
+-  **Read:** View all receipts in searchable list or individual receipt details
+-  **Update:** Edit receipt information (vendor, amount, date, category)
+-  **Delete:** Remove receipts with confirmation dialog
 
 ### 3. **Smart Receipt Management**
 - **Search:** Find receipts by vendor name
