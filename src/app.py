@@ -199,6 +199,26 @@ def update_receipt(id):
 def dashboard():
     conn = get_db_connection()
 
+    # Total spending
+    total_result = conn.execute("SELECT SUM(amount) AS total FROM receipts").fetchone()
+    total_spending = round(total_result['total'] or 0, 2)
+
+    # Average receipt amount
+    avg_result = conn.execute("SELECT AVG(amount) AS average FROM receipts").fetchone()
+    average_receipt = round(avg_result['average'] or 0, 2)
+
+    # Total receipt count
+    count_result = conn.execute("SELECT COUNT(*) AS count FROM receipts").fetchone()
+    receipt_count = count_result['count'] or 0
+
+    # Average by category
+    category_avg_data = conn.execute("""
+        SELECT category, AVG(amount) AS average
+        FROM receipts
+        GROUP BY category
+        ORDER BY average DESC
+    """).fetchall()
+
     # Spending by category
     category_data = conn.execute("""
         SELECT category, SUM(amount) AS total
@@ -227,6 +247,10 @@ def dashboard():
 
     return render_template(
         'dashboard.html',
+        total_spending=total_spending,
+        average_receipt=average_receipt,
+        receipt_count=receipt_count,
+        category_avg_data=category_avg_data,
         category_data=category_data,
         monthly_data=monthly_data,
         vendor_data=vendor_data

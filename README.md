@@ -4,13 +4,13 @@
 
 The **Digital Receipt Organizer** is a web-based application that streamlines receipt management. Users can upload receipt images, automatically extract data using AI-powered OCR, store receipts in an organized database, and analyze spending patterns through an interactive dashboard.
 
-**Status:** Alpha Release (Milestone 3)  
+**Status:** Final Release (Milestone 3 - Complete)  
 **Course:** CIDS 484 - Semester-long Software Project  
-**Last Updated:** April 2026
+**Last Updated:** May 2026
 
 ---
 
-##  Alpha Release Features
+## 🎯 Project Features
 
 ### 1. **Receipt Upload & OCR Extraction**  NEW
 - Upload receipt images (JPG, PNG, GIF, BMP, TIFF)
@@ -34,11 +34,17 @@ The **Digital Receipt Organizer** is a web-based application that streamlines re
 - **Sort:** Sort receipts by date (newest/oldest), amount (highest/lowest), vendor name, or category
 - **Categories:** Organize receipts (Food, Gas, Shopping, etc.)
 
-### 4. **Analytics Dashboard**
-Ray interactive charts powered by Chart.js:
-- **Spending by Category** - Pie chart showing expense breakdown
-- **Spending by Month** - Bar chart tracking trends over time
-- **Top Vendors** - Horizontal bar chart of most frequent stores
+### 4. **Interactive Analytics Dashboard**
+- **Summary Statistics Cards:**
+  - Total spending across all receipts
+  - Average receipt amount per category
+  - Total receipt count
+  - Number of expense categories
+- **Interactive Charts** powered by Chart.js:
+  - **Spending by Category** - Pie chart showing expense breakdown
+  - **Spending by Month** - Bar chart tracking trends over time
+  - **Top Vendors** - Horizontal bar chart of most frequent stores
+  - **Category Breakdown Table** - Detailed average spending by category
 - All visualizations update dynamically as receipts are added/modified
 
 ### 5. **User-Friendly Interface**
@@ -159,14 +165,16 @@ For a video walkthrough of features and OCR extraction in action, see Milestone 
 
 ## Possible Future Enhancements (Doubtful I'll be able to get to all)
 
-### Phase 2 (Planned)
+### Phase 2 (Possible Future Work)
 - User authentication & multi-user support
 - Export receipts to CSV/PDF
 - Receipt image compression & optimization
 - Advanced date parsing for non-English receipts
 - Recurring receipt patterns & budgeting
+- Spending goals & category budget alerts
+- Date range filtering for dashboard analysis
 
-### Phase 3 (Planned)
+### Phase 3 (Possible Future Work)
 - Mobile app (React Native)
 - Cloud storage integration (AWS S3)
 - Receipt receipt template matching
@@ -222,4 +230,4 @@ For issues, questions, or feature requests, please refer to the project document
 
 ---
 
-**Last Updated:** April 2026 | **Project Status:** Active Development
+**Last Updated:** May 2026 | **Project Status:** Final Release (Milestone 3 Complete)

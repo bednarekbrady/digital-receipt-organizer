@@ -6,6 +6,74 @@
 <!-- Load Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- Summary Stats Cards -->
+<div class="row mt-4 mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Spending</h5>
+                <h3 class="card-text">${{ "%.2f"|format(total_spending) }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Average Receipt</h5>
+                <h3 class="card-text">${{ "%.2f"|format(average_receipt) }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Receipts</h5>
+                <h3 class="card-text">{{ receipt_count }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Categories</h5>
+                <h3 class="card-text">{{ category_data|length }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Average by Category -->
+<div class="row mt-4 mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Average Spending by Category</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Average Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in category_avg_data %}
+                        <tr>
+                            <td>{{ item['category'] }}</td>
+                            <td>${{ "%.2f"|format(item['average']) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row mt-4">
     <div class="col-md-6">
         <h4>Spending by Category</h4>
